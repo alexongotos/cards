@@ -19,11 +19,13 @@ defmodule PraterWeb.RoomChannel do
   def handle_in("message:add", %{"message" => content}, socket) do
     room = Conversation.get_room!(socket.assigns[:room_id])
     user = find_user(socket)
+    IO.puts "Hello message"
 
     case Conversation.create_message(user, room, %{content: content}) do
       {:ok, message} ->
         message = Repo.preload(message, :user)
-        message_template = %{content: message.content, user: %{username: message.user.username}}
+        message_template = %{content: eddie(content), user: %{username: message.user.username}}
+
         broadcast!(socket, "room:#{message.room_id}:new_message", message_template)
         {:reply, :ok, socket}
 
@@ -58,7 +60,18 @@ defmodule PraterWeb.RoomChannel do
     {:noreply, socket}
   end
 
+  defp eddie(message) do
+
+    IO.inspect(message, label: "Eddie")
+    case message do
+      "mix ecto.create" -> message <> " <- Correct Eddie!!!"
+      _ -> message
+    end
+
+  end
+
   defp find_user(socket) do
     Repo.get(User, socket.assigns[:current_user_id])
   end
 end
+

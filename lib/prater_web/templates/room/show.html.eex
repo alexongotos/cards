@@ -1,5 +1,67 @@
 <script>window.channelRoomId = "<%= @room.id %>"</script>
 
+
+
+<div>
+<style>
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #9370DB;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #9370DB;
+}
+</style>
+</head>
+<body>
+
+<h2>Card Pack - Fundamentals 1</h2>
+
+<table>
+  <tr>
+    <th>Number</th>
+    <th>Question</th>
+    <th>Answer</th>
+    <th>Score</th>
+  </tr>
+  <tr>
+ 
+  <tr>
+    <td>1</td>
+    <td>Which ecto mix task will create your database</td>
+    <td>Mix ecto.create</td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td>2</td>
+    <td>How would you start the observer tool from iex</td>
+    <td>:observer.start()</td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td>3</td>
+    <td>foo = [1, 2, 3] [0 | foo]</td>
+    <td>=> [0, 1, 2, 3]</td>
+    <td></td>
+  </tr>
+</table>
+</div>
+
+
+<div>
+    <a href="https://www.katacoda.com/courses/elixir/playground" target="_blank">Open Elixir IEX Playground</a>
+</div>
+
 <h2><%= @room.name %></h2>
 
 <%= if Prater.Auth.Authorizer.can_manage?(@current_user, @room) do %>

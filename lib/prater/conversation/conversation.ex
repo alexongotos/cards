@@ -49,6 +49,7 @@ defmodule Prater.Conversation do
 
   def create_message(user, room, attrs \\ %{}) do
     user
+    |> IO.inspect(label: "CreateMessage")
     |> Ecto.build_assoc(:messages, room_id: room.id)
     |> Message.changeset(attrs)
     |> Repo.insert()
