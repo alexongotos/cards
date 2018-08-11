@@ -10,6 +10,8 @@ defmodule Prater.Conversation.Message do
     belongs_to :user, Prater.Auth.User
 
     timestamps()
+
+
   end
 
   @doc false
