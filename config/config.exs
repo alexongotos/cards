@@ -17,6 +17,14 @@ config :prater, PraterWeb.Endpoint,
   pubsub: [name: Prater.PubSub,
            adapter: Phoenix.PubSub.PG2]
 
+# Configures Drab
+config :drab, PraterWeb.Endpoint,
+  otp_app: :prater
+
+# Configures default Drab file extension
+config :phoenix, :template_engines,
+  drab: Drab.Live.Engine
+
 # Configures Elixir's Logger
 config :logger, :console,
   format: "$time $metadata[$level] $message\n",
